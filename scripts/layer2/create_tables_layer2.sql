@@ -1,5 +1,13 @@
--- Creating tables for layer2
+/*
+=========================
+Create Tables for Layer 2
+=========================
+Purpose:
+		This script creates tables for layer 2. 
+		If tables already exist they are droped and recreated.
+*/
 
+-- Creating table layer2.crm_cust_info
 IF OBJECT_ID ('layer2.crm_cust_info', 'U') IS NOT NULL
 	DROP TABLE layer2.crm_cust_info;
 CREATE TABLE layer2.crm_cust_info (
@@ -13,6 +21,7 @@ CREATE TABLE layer2.crm_cust_info (
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 
+-- Creating table layer2.crm_prd_info
 IF OBJECT_ID ('layer2.crm_prd_info', 'U') IS NOT NULL
 	DROP TABLE layer2.crm_prd_info;
 CREATE TABLE layer2.crm_prd_info (
@@ -27,6 +36,7 @@ CREATE TABLE layer2.crm_prd_info (
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 
+-- Creating table layer2.crm_sales_details
 IF OBJECT_ID ('layer2.crm_sales_details', 'U') IS NOT NULL
 	DROP TABLE layer2.crm_sales_details;
 CREATE TABLE layer2.crm_sales_details (
@@ -45,9 +55,9 @@ CREATE TABLE layer2.crm_sales_details (
 IF OBJECT_ID ('layer2.erp_CUST_AZ12', 'U') IS NOT NULL
 	DROP TABLE layer2.erp_CUST_AZ12;
 CREATE TABLE layer2.erp_CUST_AZ12 (
-	CID NVARCHAR(50),
-	BDATE DATE,
-	GEN NVARCHAR(50),
+	cid NVARCHAR(50),
+	bdate DATE,
+	gen NVARCHAR(50),
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 
@@ -55,17 +65,17 @@ CREATE TABLE layer2.erp_CUST_AZ12 (
 IF OBJECT_ID ('layer2.erp_LOC_A101', 'U') IS NOT NULL
 	DROP TABLE layer2.erp_LOC_A101;
 CREATE TABLE layer2.erp_LOC_A101 (
-	CID NVARCHAR(50),
-	CNTRY NVARCHAR(50),
+	cid NVARCHAR(50),
+	cntry NVARCHAR(50),
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 
 IF OBJECT_ID ('layer2.erp_PX_CAT_G1V2', 'U') IS NOT NULL
 	DROP TABLE layer2.erp_PX_CAT_G1V2;
 CREATE TABLE layer2.erp_PX_CAT_G1V2 (
-	ID NVARCHAR(50),
-	CAT NVARCHAR(50),
-	SUBCAT NVARCHAR(50),
-	MAINTENANCE NVARCHAR(50),
+	id NVARCHAR(50),
+	cat NVARCHAR(50),
+	subcat NVARCHAR(50),
+	maintenance NVARCHAR(50),
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
