@@ -1,13 +1,17 @@
 /*
 ======
-Bulk data insertion
+Load layer 1
 ======
 Purpose:
-	This script loads data from files into the tables.
+	This stored procedure loads data from files into the layer 1 tables. 
+	Truncates the layer 1 tables tables before loading data.
+
+This stored procedures does not take any parameters.
 
 Caution!
 	In case the location of your data changes, update the filepath.
 */
+
 CREATE OR ALTER PROCEDURE layer1.load_layer1 AS
 BEGIN
 	DECLARE @start_time DATETIME, @end_time DATETIME, @start_time_batch DATETIME, @end_time_batch DATETIME;
@@ -98,6 +102,7 @@ BEGIN
 		PRINT '==================================='
 		PRINT 'ERROR DURING LOADING OF LAYER 1'
 		PRINT 'ERROR MESSAGE' + ERROR_MESSAGE();
+		PRINT 'ERROR CODE ' + ERROR_NUMBER();
 		PRINT '==================================='
 	END CATCH
 END
