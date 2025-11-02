@@ -8,7 +8,6 @@ Purpose:
 
 This stored procedures does not take any parameters.
 */
-
 CREATE OR ALTER PROCEDURE layer2.load_layer2 AS
 BEGIN
 	DECLARE @start_time DATETIME, @end_time DATETIME, @start_time_batch DATETIME, @end_time_batch DATETIME;
@@ -81,7 +80,7 @@ BEGIN
 			 WHEN 'R'THEN 'Road'
 			 WHEN 'S'THEN 'Other Sales'
 			 WHEN 'M'THEN 'Touring'
-			 ELSE 'n\a'
+			 ELSE 'n/a'
 		END AS prd_line,
 		CAST(prd_start_dt AS DATE) AS prd_start_dt,
 		CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS DATE) AS prd_end_dt
@@ -150,7 +149,7 @@ BEGIN
 		END AS bdate,
 		CASE WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
 			WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
-			ELSE 'n\a'
+			ELSE 'n/a'
 		END AS gen
 		FROM layer1.erp_CUST_AZ12
 		SET @end_time = GETDATE();
@@ -170,7 +169,7 @@ BEGIN
 		REPLACE(cid, '-', '') AS cid,
 		CASE WHEN UPPER(TRIM(cntry)) = 'DE' THEN 'Germany'
 			WHEN UPPER(TRIM(cntry)) IN ('US', 'USA') THEN 'United States'
-			WHEN UPPER(TRIM(cntry)) = '' OR cntry IS NULL THEN 'n\a'
+			WHEN UPPER(TRIM(cntry)) = '' OR cntry IS NULL THEN 'n/a'
 			ELSE TRIM(cntry)
 		END AS cntry
 		FROM layer1.erp_LOC_A101
